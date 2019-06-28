@@ -89,9 +89,9 @@ public class BaseCameraView extends FrameLayout implements LifecycleObserver {
 
     private boolean isSaveImage;
 
-    private int takenPictureWidth = 512;
+    private int takenPictureWidth;
 
-    private int takenPictureHeight = 512;
+    private int takenPictureHeight;
     /**
      * Open a camera device and start showing camera preview. This is typically called from
      * {@link Activity#onResume()}.
@@ -670,8 +670,8 @@ public class BaseCameraView extends FrameLayout implements LifecycleObserver {
         @Override
         public void onPictureTaken(byte[] image) {
             if (!isScreenShot) {
-                image = ImageUtils.Companion.rotateBitmap(image);
-                image = ImageUtils.Companion.resize(getContext(), image, getWidth(), getHeight());
+                image = ImageUtils.rotateBitmap(image);
+                image = ImageUtils.resize(getContext(), image, getWidth(), getHeight());
             }
 
             if (isSaveImage) {

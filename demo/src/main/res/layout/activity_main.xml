@@ -29,8 +29,9 @@
         android:background="@android:color/black"
         app:autoFocus="true"
         app:saveImage="true"
-        app:imageWidth="512"
-        app:imageHeight="512"/>
+        app:recognition="stream"
+        app:imageWidth="224"
+        app:imageHeight="224"/>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -48,5 +49,10 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/ic_camera"
         app:useCompatPadding="true"/>
+
+    <ImageView
+        android:id="@+id/imPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

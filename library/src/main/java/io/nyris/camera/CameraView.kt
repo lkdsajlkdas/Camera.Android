@@ -26,6 +26,8 @@ class CameraView : BaseCameraView {
         val a = context.obtainStyledAttributes(attrs, R.styleable.CameraView, defStyleAttr,
                 R.style.Widget_CameraView)
         typeRecognition = a.getInt(R.styleable.CameraView_recognition, 0)
+        takenPictureWidth = a.getInt(R.styleable.CameraView_imageWidth, 512)
+        takenPictureHeight = a.getInt(R.styleable.CameraView_imageHeight, 512)
 
         mCallbacks = CallbackBridge()
 
@@ -49,12 +51,18 @@ class CameraView : BaseCameraView {
         flash = a.getInt(R.styleable.CameraView_flash, Constants.FLASH_AUTO)
 
         isSaveImage = a.getBoolean(R.styleable.CameraView_saveImage, false)
-        takenPictureWidth = a.getInt(R.styleable.CameraView_imageWidth, 512)
-        takenPictureHeight = a.getInt(R.styleable.CameraView_imageHeight, 512)
         a.recycle()
 
         updateFocusMarkerView(preview)
     }
+
+    fun setImageStreamingListener(listener: ImageStreamingListener){
+        if(mImpl is StreamCamera){
+            val stream = mImpl as StreamCamera
+            stream.setImageStreamingListener(listener)
+        }
+    }
+
 
 
     private fun cameraBelow21(type: Int, preview: PreviewImpl): CameraViewImpl {
@@ -63,6 +71,8 @@ class CameraView : BaseCameraView {
             -> Camera1(mCallbacks, preview)
             1 //barcode
             -> Camera1ZBar(mCallbacks, preview)
+            3 //Stream
+            -> Camera1Stream(mCallbacks, preview, takenPictureWidth, takenPictureHeight)
             else -> Camera1(mCallbacks, preview)
         }
     }
@@ -73,6 +83,8 @@ class CameraView : BaseCameraView {
             -> Camera2(mCallbacks, preview, context)
             1 //barcode
             -> Camera2ZBar(mCallbacks, preview, context)
+            3//Stream
+            -> Camera2Stream(mCallbacks, preview, context, takenPictureWidth, takenPictureHeight)
             else -> Camera2(mCallbacks, preview, context)
         }
     }
@@ -83,6 +95,8 @@ class CameraView : BaseCameraView {
             -> Camera2Api23(mCallbacks, preview, context)
             1 //barcode
             -> Camera2ZBarApi23(mCallbacks, preview, context)
+            3 //Stream
+            -> Camera2Api23Stream(mCallbacks, preview, context, takenPictureWidth, takenPictureHeight)
             else -> Camera2Api23(mCallbacks, preview, context)
         }
     }

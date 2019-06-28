@@ -67,7 +67,7 @@ class Camera1 extends CameraViewImpl {
     private int mDisplayOrientation;
     private Handler mHandler;
     private Camera.AutoFocusCallback mAutofocusCallback;
-    private int mCameraRotation;
+    protected int mCameraRotation;
 
     Camera1(Callback callback, PreviewImpl preview) {
         super(callback, preview);

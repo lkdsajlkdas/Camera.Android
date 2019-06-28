@@ -6,13 +6,12 @@ buildscript {
     ext.kotlinVersion = '1.2.30'
     ext.grgitVersion = '2.1.1'
     ext.dexcountVersion = '0.8.2'
-    ext.githubMavenVersion = '2.0'
+    ext.githubMavenVersion = '2.1'
     repositories {
         jcenter()
         google()
     }
     dependencies {
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintrayVersion"
         classpath "com.github.dcendents:android-maven-gradle-plugin:$githubMavenVersion"
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -25,9 +24,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        flatDir {
-            dirs '../library/src/dev/libs'
-        }
+        maven { url "https://jitpack.io" }
     }
 }
 

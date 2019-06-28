@@ -19,6 +19,7 @@ package io.nyris.camera.demo;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -35,6 +36,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Objects;
@@ -44,6 +46,7 @@ import io.nyris.camera.AspectRatio;
 import io.nyris.camera.BaseCameraView;
 import io.nyris.camera.Callback;
 import io.nyris.camera.CameraView;
+import io.nyris.camera.ImageStreamingListener;
 
 
 /**
@@ -100,8 +103,15 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mCameraView = findViewById(R.id.camera);
+        ImageView imPreview = findViewById(R.id.imPreview);
         if (mCameraView != null) {
             mCameraView.addCallback(mCallback);
+            mCameraView.setImageStreamingListener(bitmap -> runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    imPreview.setImageBitmap(bitmap);
+                }
+            }));
         }
         FloatingActionButton fab = findViewById(R.id.take_picture);
         if (fab != null) {

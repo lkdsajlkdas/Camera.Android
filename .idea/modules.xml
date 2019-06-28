@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Camera.Android.iml" filepath="$PROJECT_DIR$/Camera.Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/nyirs.camera.android.iml" filepath="$PROJECT_DIR$/nyirs.camera.android.iml" />
       <module fileurl="file://$PROJECT_DIR$/zbar-jni/zbar-jni.iml" filepath="$PROJECT_DIR$/zbar-jni/zbar-jni.iml" />
     </modules>
   </component>

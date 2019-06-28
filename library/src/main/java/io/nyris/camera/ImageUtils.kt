@@ -29,6 +29,7 @@ open class ImageUtils {
             }
         }
 
+        @JvmStatic
         fun rotateBitmap(image: ByteArray): ByteArray {
             val bitmap = BitmapFactory.decodeByteArray(image, 0, image.size)
             val matrix = Matrix()
@@ -39,6 +40,7 @@ open class ImageUtils {
             return stream.toByteArray()
         }
 
+        @JvmStatic
         fun resize(context: Context, data: ByteArray, width: Int, height: Int): ByteArray {
             var bitmap = BitmapFactory.decodeByteArray(data, 0, data.size)
             // Create and rotate the bitmap by rotationDegrees
@@ -210,7 +212,7 @@ open class ImageUtils {
                 dstWidth: Int,
                 dstHeight: Int,
                 applyRotation: Int,
-                maintainAspectRatio: Boolean): Matrix {
+                maintainAspectRatio: Boolean = true): Matrix {
             val matrix = Matrix()
 
             // Translate so center of image is at origin.

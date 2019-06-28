@@ -69,6 +69,8 @@
             <enum name="barcode" value="1" />
             <!-- Enabled Image mode. -->
             <enum name="image" value="2" />
+            <!-- Enabled Image stream. -->
+            <enum name="stream" value="3" />
         </attr>
     </declare-styleable>
 </resources>

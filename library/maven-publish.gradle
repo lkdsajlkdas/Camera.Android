@@ -1,3 +1,4 @@
+/*
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
@@ -126,4 +127,4 @@ uploadArchives {
         println android.defaultPublishConfig
         println "\u001B[32mUploaded Camera version : $gitVersionName\u001B[0m"
     }
-}
+}*/
